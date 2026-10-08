@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TriJora – Everything You Need, All in One Place</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F6F7FB;--card:#fff;--ink:#14213D;--mute:#5E6782;--line:#E3E6F0;--pri:#4B2FE0;--pri-ink:#fff;--sun:#FFB400;--ok:#13875A;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1426;--card:#181F38;--ink:#EEF0FA;--mute:#9AA3C4;--line:#2A3254;--pri:#8D78FF;--pri-ink:#0F1426}}
+:root[data-theme="dark"]{--bg:#0F1426;--card:#181F38;--ink:#EEF0FA;--mute:#9AA3C4;--line:#2A3254;--pri:#8D78FF;--pri-ink:#0F1426}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 'DM Sans',system-ui,sans-serif}
+h1,h2,h3,.logo{font-family:'Sora',system-ui,sans-serif;margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--card);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:10px;padding:10px 14px;max-width:1100px;margin:auto;flex-wrap:wrap}
+.logo{font-weight:800;font-size:1.4rem;letter-spacing:-.02em}
+.logo i{font-style:normal;color:var(--pri)}
+.search{flex:1 1 220px;order:3;width:100%}
+@media(min-width:700px){.search{order:0;width:auto}}
+.search input{width:100%;padding:11px 14px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit}
+.ib{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:9px 12px;position:relative}
+.ib b{position:absolute;top:-7px;right:-7px;background:var(--sun);color:#14213D;border-radius:99px;font-size:.72rem;min-width:19px;height:19px;display:grid;place-items:center}
+main{max-width:1100px;margin:auto;padding:0 14px 40px}
+.hero{margin:16px 0;border-radius:18px;padding:30px 22px;background:linear-gradient(120deg,#4B2FE0,#7B5CFF);color:#fff}
+.hero h1{font-size:clamp(1.7rem,6vw,2.8rem);line-height:1.1;max-width:14ch}
+.hero p{max-width:44ch;opacity:.92}
+.btn{background:var(--sun);color:#14213D;border:0;border-radius:10px;padding:11px 18px;font-weight:700}
+.btn.p{background:var(--pri);color:var(--pri-ink)}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px}
+.chip{white-space:nowrap;border:1px solid var(--line);background:var(--card);border-radius:99px;padding:8px 14px}
+.chip[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.sec{display:flex;justify-content:space-between;align-items:baseline;margin:22px 0 10px}
+.sec h2{font-size:1.3rem}
+.sec span{color:var(--mute);font-size:.9rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:4px;position:relative}
+.pic{height:96px;border-radius:10px;display:grid;place-items:center;font-size:2.6rem;background:var(--bg)}
+.tag{position:absolute;top:10px;left:10px;font-size:.75rem;font-weight:700;background:var(--sun);color:#14213D;border-radius:6px;padding:2px 7px}
+.tag.n{background:var(--ok);color:#fff}
+.heart{position:absolute;top:8px;right:8px;border:0;background:var(--card);border-radius:99px;width:32px;height:32px}
+.name{font-weight:500;font-size:.95rem;line-height:1.3;min-height:2.6em}
+.st{color:var(--mute);font-size:.82rem}.st b{color:#E59A00}
+.pr{font-weight:700;font-family:'Sora',sans-serif}.pr s{font-weight:400;color:var(--mute);font-size:.82rem;margin-left:4px}
+.card .btn{margin-top:auto;padding:8px;font-size:.9rem}
+.two{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.box h3{font-size:1.05rem;margin-bottom:6px}
+.box input{padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;width:100%;margin:6px 0}
+.steps{display:flex;gap:6px;margin-top:10px}
+.steps div{flex:1;text-align:center;font-size:.75rem;color:var(--mute);border-top:4px solid var(--line);padding-top:4px}
+.steps .on{border-color:var(--ok);color:var(--ink);font-weight:700}
+.drawer{position:fixed;inset:0 0 0 auto;width:min(400px,100%);background:var(--card);z-index:40;transform:translateX(105%);transition:transform .25s;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);box-shadow:-8px 0 30px rgba(0,0,0,.25)}
+.drawer.open{transform:none}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:14px;border-bottom:1px solid var(--line)}
+.dl{flex:1;overflow:auto;padding:10px 14px}
+.row{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+.row .e{font-size:1.8rem}.row .i{flex:1;font-size:.92rem}
+.q button{width:28px;height:28px;border:1px solid var(--line);background:var(--bg);border-radius:8px}
+.df{padding:14px;border-top:1px solid var(--line)}
+.df .btn{width:100%}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,80px);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;z-index:60;transition:transform .2s}
+.toast.on{transform:translate(-50%,0)}
+footer{text-align:center;color:var(--mute);font-size:.88rem;padding:24px 14px}
+.empty{color:var(--mute);padding:20px 0;text-align:center}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style></head><body>
+<header><div class="bar">
+<span class="logo">Tri<i>Jora</i></span>
+<div class="search"><input id="q" type="search" placeholder="Search earbuds, sarees, lamps, notebooks…" aria-label="Search products"></div>
+<span style="flex:1" class="sp"></span>
+<button class="ib" id="bAcc" aria-label="My account">👤</button>
+<button class="ib" id="bWish" aria-label="Wishlist">❤️<b id="wc">0</b></button>
+<button class="ib" id="bCart" aria-label="Cart">🛒<b id="cc">0</b></button>
+</div></header>
+<main>
+<section class="hero"><h1>Everything You Need, All in One Place.</h1>
+<p>Gadgets, fashion, home essentials and jewellery at competitive prices, delivered to your doorstep.</p>
+<button class="btn" onclick="go('deals')">Shop today's deals</button></section>
+
+<div class="chips" id="chips" role="group" aria-label="Categories"></div>
+
+<div id="results"></div>
+<div id="sections">
+<div class="sec" id="deals"><h2>🔥 Deals &amp; discounts</h2><span>Up to 40% off</span></div><div class="grid" id="gDeals"></div>
+<div class="sec" id="new"><h2>🆕 New arrivals</h2><span>Just landed</span></div><div class="grid" id="gNew"></div>
+</div>
+
+<div class="sec" id="track"><h2>📦 Track your order</h2></div>
+<div class="two">
+<div class="box"><h3>Order tracking</h3><label for="oid" class="st">Enter your order ID (try TJ1001, TJ1002, TJ1003)</label>
+<input id="oid" placeholder="TJ1001"><button class="btn p" id="tbtn">Track order</button><div id="tres"></div></div>
+<div class="box"><h3>🚚 Delivery information</h3><p class="st">Standard delivery in 3–7 days. Express in 1–2 days for select pincodes. Free delivery on orders above ₹499. Easy 7-day returns on eligible items.</p></div>
+<div class="box"><h3>📞 Customer support</h3><p class="st">Chat, call or email us 9am–9pm, every day.</p><p><b>support@trijora.com</b><br>1800-000-0000</p></div>
+<div class="box"><h3>💰 Secure payment</h3><p class="st">UPI, cards, net banking, wallets and cash on delivery. Payments are encrypted end to end.</p></div>
+</div>
+</main>
+<footer>© 2026 TriJora · Everything You Need, All in One Place.</footer>
+
+<aside class="drawer" id="dCart" aria-label="Shopping cart"><div class="dh"><h3>Your cart</h3><button class="ib" data-close>✕</button></div><div class="dl" id="lCart"></div><div class="df"><div class="row" style="border:0"><b class="i">Total</b><b id="tot">₹0</b></div><button class="btn" id="chk">Pay securely</button></div></aside>
+<aside class="drawer" id="dWish" aria-label="Wishlist"><div class="dh"><h3>Wishlist</h3><button class="ib" data-close>✕</button></div><div class="dl" id="lWish"></div></aside>
+<aside class="drawer" id="dAcc" aria-label="Account"><div class="dh"><h3>My account</h3><button class="ib" data-close>✕</button></div><div class="dl"><div id="accBox"></div></div></aside>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const P=[
+["Wireless earbuds","Electronics",1299,1999,4.4,2310,"🎧",0],["Bluetooth speaker","Electronics",1499,2499,4.5,1820,"🔊",0],
+["Smart watch","Electronics",1999,3299,4.2,980,"⌚",1],["Power bank 10000mAh","Electronics",899,1299,4.3,2750,"🔋",0],
+["Fast charger + cable","Electronics",499,799,4.1,3410,"🔌",0],["Wireless mouse","Electronics",449,699,4.3,1290,"🖱️",1],
+["LED strip lights","Electronics",349,599,4.0,860,"💡",0],
+["Cotton t-shirt","Fashion",399,699,4.2,1950,"👕",0],["Printed kurti","Fashion",699,1099,4.4,1120,"👗",1],
+["Silk blend saree","Fashion",1899,2999,4.6,640,"🥻",1],["Slim fit jeans","Fashion",999,1599,4.1,1580,"👖",0],
+["Leather wallet","Fashion",549,899,4.3,970,"👛",0],["Everyday backpack","Fashion",899,1499,4.4,1330,"🎒",0],
+["Electric kettle","Home",799,1299,4.3,2210,"☕",0],["Mixer grinder","Home",2199,3499,4.4,1760,"🍹",1],
+["Storage organiser set","Home",599,999,4.2,830,"🧺",0],["Rechargeable table lamp","Home",649,999,4.3,720,"🪔",1],
+["Floor cleaning mop","Home",499,799,4.1,1140,"🧹",0],
+["Pearl drop earrings","Jewellery",349,599,4.5,1480,"✨",0],["Layered necklace","Jewellery",499,899,4.4,760,"📿",1],
+["Stackable rings","Jewellery",299,499,4.2,620,"💍",0],["Hair clip set","Jewellery",199,349,4.3,1890,"🎀",0],
+["Steel water bottle","Essentials",399,599,4.5,2640,"🧴",0],["Notebook pack of 5","Essentials",249,399,4.4,1710,"📓",1],
+["Lunch box set","Essentials",449,699,4.3,1250,"🍱",0]
+].map((a,i)=>({id:i,n:a[0],c:a[1],p:a[2],o:a[3],r:a[4],k:a[5],e:a[6],nw:a[7]}));
+const CATS=["All","Electronics","Fashion","Home","Jewellery","Essentials"],CL={All:"🛍️ All",Electronics:"📱 Electronics",Fashion:"👕 Fashion",Home:"🏠 Home Appliances",Jewellery:"💎 Jewellery",Essentials:"🛒 Daily Essentials"};
+const S={cart:{},wish:new Set(),cat:"All",q:"",user:null};
+const $=s=>document.querySelector(s),inr=n=>"₹"+n.toLocaleString("en-IN");
+function save(){try{localStorage.setItem("tj",JSON.stringify({cart:S.cart,wish:[...S.wish]}))}catch(e){}}
+try{const d=JSON.parse(localStorage.getItem("tj")||"null");if(d){S.cart=d.cart||{};S.wish=new Set(d.wish||[])}}catch(e){}
+function toast(t){const e=$("#toast");e.textContent=t;e.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove("on"),1600)}
+function card(p){const off=Math.round((1-p.p/p.o)*100);return `<article class="card"><span class="tag ${p.nw&&off<30?'n':''}">${p.nw&&off<30?'New':off+'% off'}</span><button class="heart" data-w="${p.id}" aria-label="Toggle wishlist for ${p.n}">${S.wish.has(p.id)?'❤️':'🤍'}</button><div class="pic">${p.e}</div><div class="name">${p.n}</div><div class="st"><b>★ ${p.r}</b> (${p.k.toLocaleString("en-IN")})</div><div class="pr">${inr(p.p)}<s>${inr(p.o)}</s></div><button class="btn" data-a="${p.id}">Add to cart</button></article>`}
+function render(){
+ $("#chips").innerHTML=CATS.map(c=>`<button class="chip" aria-pressed="${S.cat===c}" data-c="${c}">${CL[c]}</button>`).join("");
+ const filt=S.cat!=="All"||S.q;
+ $("#sections").style.display=filt?"none":"";
+ if(filt){const l=P.filter(p=>(S.cat==="All"||p.c===S.cat)&&(p.n+" "+p.c).toLowerCase().includes(S.q.toLowerCase()));
+  $("#results").innerHTML=`<div class="sec"><h2>${S.q?'Results for “'+S.q.replace(/</g,"&lt;")+'”':CL[S.cat]}</h2><span>${l.length} items</span></div>`+(l.length?`<div class="grid">${l.map(card).join("")}</div>`:`<div class="empty">No products found. Try another word or pick a different category.</div>`)}
+ else{$("#results").innerHTML="";
+  $("#gDeals").innerHTML=[...P].sort((a,b)=>b.o/b.p-a.o/a.p).slice(0,6).map(card).join("");
+  $("#gNew").innerHTML=P.filter(p=>p.nw).slice(0,6).map(card).join("")}
+ const n=Object.values(S.cart).reduce((a,b)=>a+b,0);$("#cc").textContent=n;$("#wc").textContent=S.wish.size;
+ const ids=Object.keys(S.cart);
+ $("#lCart").innerHTML=ids.length?ids.map(i=>{const p=P[i];return `<div class="row"><span class="e">${p.e}</span><div class="i">${p.n}<br><b>${inr(p.p*S.cart[i])}</b></div><div class="q"><button data-m="${i}" aria-label="Decrease">−</button> ${S.cart[i]} <button data-a="${i}" aria-label="Increase">+</button></div></div>`}).join(""):`<div class="empty">Your cart is empty. Add something you like.</div>`;
+ $("#tot").textContent=inr(ids.reduce((a,i)=>a+P[i].p*S.cart[i],0));
+ $("#lWish").innerHTML=S.wish.size?[...S.wish].map(i=>{const p=P[i];return `<div class="row"><span class="e">${p.e}</span><div class="i">${p.n}<br><b>${inr(p.p)}</b></div><button class="btn" data-a="${i}" style="padding:7px 10px">Add</button><button class="ib" data-w="${i}" aria-label="Remove">✕</button></div>`}).join(""):`<div class="empty">No saved items yet. Tap the heart on any product.</div>`;
+ acc();save()}
+function acc(){$("#accBox").innerHTML=S.user?`<p>Signed in as <b>${S.user}</b></p><p class="st">Your orders: TJ1001, TJ1002, TJ1003</p><button class="btn p" id="out">Sign out</button>`:`<label class="st" for="em">Email</label><input id="em" type="email" placeholder="you@example.com" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);margin:6px 0 12px"><button class="btn p" id="in">Sign in / Create account</button>`}
+function open_(id){document.querySelectorAll(".drawer").forEach(d=>d.classList.remove("open"));if(id)$(id).classList.add("open")}
+function go(id){document.getElementById(id).scrollIntoView()}
+document.addEventListener("click",e=>{const t=e.target.closest("button");if(!t)return;
+ if(t.dataset.a!==undefined){S.cart[t.dataset.a]=(S.cart[t.dataset.a]||0)+1;render();toast("Added to cart")}
+ else if(t.dataset.m!==undefined){const k=t.dataset.m;if(--S.cart[k]<=0)delete S.cart[k];render()}
+ else if(t.dataset.w!==undefined){const k=+t.dataset.w;S.wish.has(k)?S.wish.delete(k):S.wish.add(k);render()}
+ else if(t.dataset.c){S.cat=t.dataset.c;render()}
+ else if(t.hasAttribute("data-close"))open_();
+ else if(t.id==="bCart")open_("#dCart");else if(t.id==="bWish")open_("#dWish");else if(t.id==="bAcc")open_("#dAcc");
+ else if(t.id==="chk"){if(!Object.keys(S.cart).length)return toast("Add items to your cart first");S.cart={};render();open_();toast("Demo checkout: order placed (TJ1001)")}
+ else if(t.id==="in"){const v=$("#em").value.trim();if(!/.+@.+\..+/.test(v))return toast("Enter a valid email");S.user=v;acc()}
+ else if(t.id==="out"){S.user=null;acc()}
+ else if(t.id==="tbtn"){const id=$("#oid").value.trim().toUpperCase(),m={TJ1001:2,TJ1002:3,TJ1003:1},s=["Placed","Packed","Shipped","Delivered"];
+  $("#tres").innerHTML=m[id]!==undefined?`<div class="steps">${s.map((x,i)=>`<div class="${i<=m[id]?'on':''}">${x}</div>`).join("")}</div>`:`<p class="st">We couldn't find that order ID. Check it and try again.</p>`}
+});
+$("#q").addEventListener("input",e=>{S.q=e.target.value.trim();render()});
+render();
+</script></body></html>
